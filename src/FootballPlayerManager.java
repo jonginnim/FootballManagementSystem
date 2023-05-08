@@ -1,7 +1,9 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 import player.FootballPlayer;
+import player.PlayerKind;
 import player.ForwardPlayer;
+import player.GoalkeeperPlayer;
 
 public class FootballPlayerManager {
 	ArrayList<FootballPlayer> players = new ArrayList<FootballPlayer>();
@@ -19,16 +21,30 @@ public class FootballPlayerManager {
 		while(kind != 1 && kind !=2) {	
 			System.out.println("1 for Forward.");
 			System.out.println("2 for Midfielder");
-			System.out.println("Select number for Player's Position between 1 and 2: ");
+			System.out.println("3 for Defender");
+			System.out.println("4 for Goalkeeper");
+			System.out.println("Select number for Player's Position between 1-4: ");
 			kind = scan.nextInt();
 			if (kind==1) {
-				player = new ForwardPlayer();
+				player = new ForwardPlayer(PlayerKind.Forward);
 				player.getUserInput(scan);
 				players.add(player);
 				break;
 			}
 			else if (kind==2) {
 				player = new FootballPlayer();
+				player.getUserInput(scan);
+				players.add(player);
+				break;
+			}
+			else if (kind==3) {
+				player = new FootballPlayer();
+				player.getUserInput(scan);
+				players.add(player);
+				break;
+				}
+			else if (kind==4) {
+				player = new GoalkeeperPlayer(PlayerKind.Goalkeeper);
 				player.getUserInput(scan);
 				players.add(player);
 				break;

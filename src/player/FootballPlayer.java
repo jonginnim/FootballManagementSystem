@@ -12,12 +12,25 @@ public class FootballPlayer {
 	public FootballPlayer() {
 		
 	}
+	
+	public FootballPlayer(PlayerKind kind) {
+		this.kind=kind;
+		
+	}
 	public FootballPlayer(String name, int id) {
 		this.name = name;
 		this.id = id;
 	}
-
+	
 	public FootballPlayer(String name, int id, String sns, String phone) {
+		this.name = name;
+		this.id = id;
+		this.sns = sns;
+		this.phone = phone;
+	}
+
+	public FootballPlayer(PlayerKind kind, String name, int id, String sns, String phone) {
+		this.kind = kind;
 		this.name = name;
 		this.id = id;
 		this.sns = sns;
@@ -55,8 +68,26 @@ public class FootballPlayer {
 		this.phone = phone;
 	}
 	
+	
+	
 	public void printInfo() {
-		System.out.println("name: "+name+", id: "+id+", sns address: "+sns+", phone:"+phone);
+		String skind = "none";
+		switch(this.kind) {
+		case Forward: 
+			skind = "[FW]";
+			break;
+		case Midfielder:
+			skind = "[MF]";
+			break;
+		case Defender:
+			skind = "[DF]";
+			break;
+		case Goalkeeper:
+			skind = "[GK]";
+			break;
+		default: 
+		}
+		System.out.println("kind: "+skind+" name: "+name+", id: "+id+", sns address: "+sns+", phone:"+phone);
 
 	}
 	

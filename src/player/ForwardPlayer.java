@@ -3,6 +3,12 @@ package player;
 import java.util.Scanner;
 
 public class ForwardPlayer extends FootballPlayer {
+	
+	
+	public ForwardPlayer(PlayerKind kind) {
+		super(kind);
+		}
+	
 	public void getUserInput(Scanner scan) {
 		System.out.print("Player ID: ");
 		int id = scan.nextInt();
