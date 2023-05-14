@@ -1,12 +1,14 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 import player.FootballPlayer;
+import player.FootballPlayerInput;
 import player.PlayerKind;
 import player.ForwardPlayer;
 import player.GoalkeeperPlayer;
+import player.MidfielderPlayer;
 
 public class FootballPlayerManager {
-	ArrayList<FootballPlayer> players = new ArrayList<FootballPlayer>();
+	ArrayList<FootballPlayerInput> players = new ArrayList<FootballPlayerInput>();
 	
 	FootballPlayer player;
 	Scanner scan;
@@ -17,7 +19,7 @@ public class FootballPlayerManager {
 	
 	public void addplayers() {
 		int kind = 0;
-		FootballPlayer player;
+		FootballPlayerInput playerInput;
 		while(kind != 1 && kind !=2) {	
 			System.out.println("1 for Forward.");
 			System.out.println("2 for Midfielder");
@@ -26,27 +28,22 @@ public class FootballPlayerManager {
 			System.out.println("Select number for Player's Position between 1-4: ");
 			kind = scan.nextInt();
 			if (kind==1) {
-				player = new ForwardPlayer(PlayerKind.Forward);
-				player.getUserInput(scan);
-				players.add(player);
+				playerInput = new ForwardPlayer(PlayerKind.Forward);
+				playerInput.getUserInput(scan);
+				players.add(playerInput);
 				break;
 			}
 			else if (kind==2) {
-				player = new FootballPlayer();
-				player.getUserInput(scan);
-				players.add(player);
+				playerInput = new MidfielderPlayer(PlayerKind.Midfielder);
+				playerInput.getUserInput(scan);
+				players.add(playerInput);
 				break;
 			}
-			else if (kind==3) {
-				player = new FootballPlayer();
-				player.getUserInput(scan);
-				players.add(player);
-				break;
-				}
+		
 			else if (kind==4) {
-				player = new GoalkeeperPlayer(PlayerKind.Goalkeeper);
-				player.getUserInput(scan);
-				players.add(player);
+				playerInput = new GoalkeeperPlayer(PlayerKind.Goalkeeper);
+				playerInput.getUserInput(scan);
+				players.add(playerInput);
 				break;
 			}
 			else {
@@ -88,8 +85,8 @@ public class FootballPlayerManager {
 		System.out.print("Player ID: ");
 		int playerId = scan.nextInt();
 		for (int i=0; i<players.size();i++) {
-			FootballPlayer player = players.get(i);
-			if(player.getId() == playerId) {
+			FootballPlayerInput playerInput = players.get(i); 
+			if(playerInput.getId() == playerId) {
 			System.out.println("The Player to be Edited is "+playerId);
 			
 			int num = -1;
@@ -106,23 +103,23 @@ public class FootballPlayerManager {
 				if (num ==1) {
 					System.out.print("Player Id: ");
 					int id = scan.nextInt();
-					player.setId(id);
+					playerInput.setId(id);
 				}
 				else if (num==2) {
 					System.out.print("Player Name: ");
 					String name = scan.next();
-					player.setName(name);
+					playerInput.setName(name);
 				}
 				else if (num==3) {
 					System.out.print("Player Sns: ");
 					String sns = scan.next();
-					player.setSns(sns);
+					playerInput.setSns(sns);
 				}
 				else if (num==4) {
 					System.out.print("Phone Number: ");
 					String phone = scan.next();
-					player.setPhone(phone);
-				}
+					playerInput.setPhone(phone);
+				} 
 				else {
 					continue;
 				}

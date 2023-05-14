@@ -2,10 +2,9 @@ package player;
 
 import java.util.Scanner;
 
-public class ForwardPlayer extends FootballPlayer implements FootballPlayerInput {
+public class MidfielderPlayer extends FootballPlayer implements FootballPlayerInput {
 	
-	
-	public ForwardPlayer(PlayerKind kind) {
+	public MidfielderPlayer(PlayerKind kind) {
 		super(kind);
 		}
 	
@@ -18,33 +17,15 @@ public class ForwardPlayer extends FootballPlayer implements FootballPlayerInput
 		String name = scan.next();
 		this.setName(name);
 		
-		char answer = 'x';
-		while (answer != 'y' && answer != 'Y' && answer != 'n' && answer != 'N') {
-			
-		System.out.print("Do you have a SNS address? (Y/N)");
-		answer = scan.next().charAt(0);
-		if (answer == 'y' || answer == 'Y') {
-			System.out.print("SNS address: ");
-			String sns = scan.next();
-			this.setSns(sns);
-			break;
-			
-		}
-		else if (answer == 'n' || answer == 'N') {
-			this.setSns("");
-			break;
-		}
-		else {
-			
-		}
-	}
-		
+		System.out.print("SNS address: ");
+		String sns = scan.next();
+		this.setSns(sns);
 		
 		System.out.print("Phone number: ");
 		String phone = scan.next(); 
 		this.setPhone(phone);
-	}
-	
+	} 
+
 	public void printInfo() {
 		String skind = "none";
 		switch(this.kind) {

@@ -2,7 +2,7 @@ package player;
 
 import java.util.Scanner;
 
-public class GoalkeeperPlayer extends FootballPlayer {
+public class GoalkeeperPlayer extends FootballPlayer implements FootballPlayerInput {
 	
 	
 	
