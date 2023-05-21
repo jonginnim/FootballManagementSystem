@@ -2,7 +2,9 @@ package player;
 
 import java.util.Scanner;
 
-public abstract class FootballPlayer {
+import exceptions.SnsFormatException;
+
+public abstract class FootballPlayer implements FootballPlayerInput {
 	protected PlayerKind kind = PlayerKind.Forward;
 	protected String name;
 	protected int id;
@@ -33,7 +35,7 @@ public abstract class FootballPlayer {
 		this.kind = kind;
 		this.name = name;
 		this.id = id;
-		this.sns = sns;
+		this.sns = sns; 
 		this.phone = phone;
 	}
 	
@@ -58,7 +60,11 @@ public abstract class FootballPlayer {
 	public String getSns() {
 		return sns;
 	}
-	public void setSns(String sns) {
+	public void setSns(String sns) throws SnsFormatException {
+		if (!sns.contains("@") && !sns.equals("")) { 
+			throw new SnsFormatException();
+		}
+		
 		this.sns = sns;
 	}
 	public String getPhone() {
@@ -69,7 +75,59 @@ public abstract class FootballPlayer {
 	}
 	public abstract void printInfo();
 	
+	public void setPlayerID(Scanner scan) {
+		System.out.print("Player Id: ");
+		int id = scan.nextInt();
+		this.setId(id);
+		
+		}
 	
+	public void setPlayerName(Scanner scan) {
+		System.out.print("Player Name: ");
+		String name = scan.next();
+		this.setName(name);
+		}  
+	
+	public void setPlayerSns(Scanner scan) {
+		String sns ="";
+		while (!sns.contains("@")) {
+		
+		System.out.print("Player Sns: ");
+		sns = scan.next();
+		try {
+			this.setSns(sns);
+		} catch (SnsFormatException e) {
+			System.out.println("Incorrect Sns Format. Put the Sns address that contains @");
+		}
+		}
+	}
+	
+	public void setPlayerPhone(Scanner scan) {
+		System.out.print("Player Phone: ");
+		String phone = scan.next();
+		this.setPhone(phone);
+		} 
+	
+	public String getKindString() {
+		String skind = "none";
+		switch(this.kind) {
+		case Forward: 
+			skind = "[FW]";
+			break;
+		case Midfielder:
+			skind = "[MF]";
+			break;
+		case Defender:
+			skind = "[DF]";
+			break;
+		case Goalkeeper:
+			skind = "[GK]";
+			break;
+		default: 
+		}
+		return skind;
+		
+	}
 	
 	
 
