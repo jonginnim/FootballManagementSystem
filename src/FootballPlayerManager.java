@@ -1,19 +1,21 @@
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
-import player.FootballPlayer;
 import player.FootballPlayerInput;
 import player.PlayerKind;
 import player.ForwardPlayer;
 import player.GoalkeeperPlayer;
 import player.MidfielderPlayer;
 
-public class FootballPlayerManager {
+public class FootballPlayerManager implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1652967168011275911L;
+	
 	ArrayList<FootballPlayerInput> players = new ArrayList<FootballPlayerInput>();
-	
-	FootballPlayer player;
-	Scanner scan;
-	
+	transient Scanner scan;
 	FootballPlayerManager(Scanner scan){
 		this.scan = scan;
 	}

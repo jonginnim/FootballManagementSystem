@@ -1,10 +1,16 @@
 package player;
 
+import java.io.Serializable;
 import java.util.Scanner;
 
 import exceptions.SnsFormatException;
 
-public abstract class FootballPlayer implements FootballPlayerInput {
+public abstract class FootballPlayer implements FootballPlayerInput, Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 7104351177669237384L;
+	
 	protected PlayerKind kind = PlayerKind.Forward;
 	protected String name;
 	protected int id;
